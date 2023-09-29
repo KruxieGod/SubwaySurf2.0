@@ -538,6 +538,8 @@ MonoBehaviour:
   - {fileID: 4989365910153857723}
   - {fileID: 6240401217546114781}
   - {fileID: 6212698018937213107}
+  _obstacles:
+  - {fileID: 1616170975344175105, guid: 50337638e7452644ca68cfb7066b1246, type: 3}
 --- !u!1 &8977818873319380864
 GameObject:
   m_ObjectHideFlags: 0

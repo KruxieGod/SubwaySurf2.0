@@ -22,10 +22,9 @@ public class PlayerManager : MonoBehaviour
         switch (direction)
         {
             case Direction.Left:
-                _movementHandler.MoveTo(_boardMove.GetFromPositionToNext(direction));
-                break;
             case Direction.Right:
-                _movementHandler.MoveTo(_boardMove.GetFromPositionToNext(direction));
+                if (_boardMove.GetFromPositionToNext(direction,out var pos)) 
+                    _movementHandler.MoveToX(pos);
                 break;
         }
 

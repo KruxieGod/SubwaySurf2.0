@@ -7,7 +7,9 @@ using UnityEngine;
 public class MovementHandler : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    private Vector3 _targetPos;
+    private float _targetPos;
+    private float _previousPos;
+    [SerializeField] private float _speedTimeToPos;
     private Rigidbody _rb;
     private bool _canMove;
     private void Awake()
@@ -15,21 +17,26 @@ public class MovementHandler : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    public void MoveTo(Vector3 position)
+    public void MoveToX(Vector3 position)
     {
         _canMove = true;
-        _targetPos = position;
+        _targetPos = position.x;
+        _previousPos = transform.position.x;
     }
 
     public void Move()
     {
         var direction = transform.forward*_speed;
-        var dir = (_targetPos - transform.position).normalized.x;
-        if (_canMove && Mathf.Abs(dir) > Double.Epsilon)
-            transform.position = new Vector3(_targetPos.x,transform.position.y,transform.position.z);
-            //direction += new Vector3(dir, 0, 0)*_speed*2f;
+        var toTarget = _targetPos - transform.position.x;
+        if (_canMove && Mathf.Abs(toTarget) > Double.Epsilon)
+        {
+            _previousPos = Mathf.MoveTowards(_previousPos, _targetPos,_speedTimeToPos * Time.deltaTime);
+            var currentPosition = transform.position;
+            transform.position = new Vector3(_previousPos,currentPosition.y, currentPosition.z);
+        }
         else
             _canMove = false;
-        _rb.velocity = direction*Time.deltaTime;
+        
+        transform.position += direction*Time.deltaTime;
     }
 }

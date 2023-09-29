@@ -17,16 +17,20 @@ public class BoardMove : MonoBehaviour
     {
         _last = Instantiate(_prefabs[Random.Range(0, _prefabs.Length)], transform.position, Quaternion.identity);
         _last.transform.position = _player.transform.position;
+        _last.Initialize();
         _queue.Enqueue(_last);
     }
 
-    public Vector3 GetFromPositionToNext(Direction direction)
+    public bool GetFromPositionToNext(Direction direction,out Vector3 position)
     {
-        if (direction == Direction.Left && _indexPlayer - 1 > 0)
-            return _last.Roads[--_indexPlayer].position;
+        if (direction == Direction.Left && _indexPlayer - 1 >= 0)
+            _indexPlayer--;
+
         if (direction == Direction.Right && _indexPlayer + 1 < _last.Roads.Length)
-            return _last.Roads[++_indexPlayer].position;
-        return Vector3.zero;
+            _indexPlayer++;
+        
+        position = _last.Roads[_indexPlayer].position;
+        return direction != Direction.None;
     }
 
     private void Update()
@@ -38,6 +42,7 @@ public class BoardMove : MonoBehaviour
             var positionY = _last.Position.y;
             var positionZ = _last.Position.z - _last.Scale.z * _offset;
             _last = Instantiate(board , new Vector3(positionX, positionY, positionZ), Quaternion.identity);
+            _last.Initialize();
             _queue.Enqueue(_last);
             while (_queue.Count > 2)
                 Destroy( _queue.Dequeue().gameObject);
