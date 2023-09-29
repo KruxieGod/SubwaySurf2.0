@@ -6,19 +6,19 @@ using UnityEngine.InputSystem;
 
 public class InputPlayer : MonoBehaviour
 {
-    private PlayerManager _mover;
+    private PlayerManager _playerManager;
     private void Start()
     {
-        _mover = GetComponent<PlayerManager>();
+        _playerManager = GetComponent<PlayerManager>();
     }
 
     private void Update()
     {
         var direction = Direction.None;
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) // Считываем клавишу D или стрелку направо
             direction = Direction.Right;
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) // Считываем клавишу A или стрелку налево
             direction = Direction.Left;
-        _mover.MoveTo(direction);
+        _playerManager.MoveTo(direction); // передаем направление
     }
 }

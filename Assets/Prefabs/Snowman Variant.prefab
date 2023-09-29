@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snowman Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 671c2f4f58de2714f940ac2cc8d60e9a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 671c2f4f58de2714f940ac2cc8d60e9a, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -71,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 671c2f4f58de2714f940ac2cc8d60e9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1616170975344175105}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 671c2f4f58de2714f940ac2cc8d60e9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7181517041266548283}
   m_SourcePrefab: {fileID: 100100000, guid: 671c2f4f58de2714f940ac2cc8d60e9a, type: 3}
 --- !u!1 &8055369849346621342 stripped
 GameObject:
@@ -89,3 +96,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdad40c720b841ed82d99f9d19f5a2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &7181517041266548283
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055369849346621342}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7741878
+  m_Height: 1.2570047
+  m_Direction: 1
+  m_Center: {x: 0.012810677, y: 0.62919664, z: 0.00028067827}

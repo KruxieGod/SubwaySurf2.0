@@ -7,27 +7,39 @@ public class PlayerManager : MonoBehaviour
 {
     private MovementHandler _movementHandler;
     private BoardMove _boardMove;
-    private void Awake()
+    private AnimatorManager _animatorManager;
+    private bool _isDead;
+    
+    private void Awake() // когда появляется объект
     {
-        _movementHandler = GetComponent<MovementHandler>();
+        _animatorManager = GetComponent<AnimatorManager>(); // получаем скрипт аниматора
+        _movementHandler = GetComponent<MovementHandler>(); // получаем скрипт передвижения
     }
 
     public void SubscribeBoard(BoardMove boardMove)
     {
-        _boardMove = boardMove;
+        _boardMove = boardMove;// получили скрипт передвижения дорог
     }
-
+    
     public void MoveTo(Direction direction)
     {
+        if (_isDead)
+            return;
         switch (direction)
         {
             case Direction.Left:
             case Direction.Right:
-                if (_boardMove.GetFromPositionToNext(direction,out var pos)) 
-                    _movementHandler.MoveToX(pos);
+                if (_boardMove.GetFromPositionToNext(direction,out var pos)) // получаем позицию следующей дорожки
+                    _movementHandler.MoveToX(pos); // передаем позицию куда нам надо идти
                 break;
         }
 
-        _movementHandler.Move();
+        _movementHandler.Move(); // бежит
+    }
+
+    public void Death()
+    {
+        _isDead = true;
+        _animatorManager.PlayDeath();
     }
 }

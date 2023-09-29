@@ -10,6 +10,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _player.SubscribeBoard(_boardMove);
+        _player.SubscribeBoard(_boardMove); // Подписываем наш мувер
     }
 }
