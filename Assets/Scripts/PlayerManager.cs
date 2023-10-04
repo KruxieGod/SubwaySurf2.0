@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     
     private void Awake() // когда появляется объект
     {
+        DataColliders.OnObstacleActions.Add(GetComponent<Collider>(),Death);
         _animatorManager = GetComponent<AnimatorManager>(); // получаем скрипт аниматора
         _movementHandler = GetComponent<MovementHandler>(); // получаем скрипт передвижения
     }
@@ -35,6 +36,11 @@ public class PlayerManager : MonoBehaviour
         }
 
         _movementHandler.Move(); // бежит
+    }
+
+    public void ThrowSnow()
+    {
+        _animatorManager.PlaySnowballThrower();
     }
 
     public void Death()

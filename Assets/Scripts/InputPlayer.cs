@@ -19,6 +19,8 @@ public class InputPlayer : MonoBehaviour
             direction = Direction.Right;
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) // Считываем клавишу A или стрелку налево
             direction = Direction.Left;
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            _playerManager.ThrowSnow();
         _playerManager.MoveTo(direction); // передаем направление
     }
 }
