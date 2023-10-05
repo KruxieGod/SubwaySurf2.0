@@ -43,9 +43,10 @@ public class PlayerManager : MonoBehaviour
         _animatorManager.PlaySnowballThrower();
     }
 
-    public void Death()
+    public Vector3 Death()
     {
         _isDead = true;
         _animatorManager.PlayDeath();
+        return Vector3.zero;
     }
 }

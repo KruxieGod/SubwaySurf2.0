@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class DataColliders
 {
-    public static Dictionary<Collider, Action> OnObstacleActions { get; private set; } = new();
+    public static Dictionary<Collider, Func<Vector3>> OnObstacleActions { get; private set; } = new();
 }

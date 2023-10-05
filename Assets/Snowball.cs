@@ -10,7 +10,10 @@ public class Snowball : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (DataColliders.OnObstacleActions.TryGetValue(other,out var action))
-            action?.Invoke();
+        {
+            var position = action.Invoke();
+            transform.position = new Vector3(position.x,transform.position.y,position.z);
+        }
         Destroy(gameObject);
     }
 

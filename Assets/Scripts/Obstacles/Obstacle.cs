@@ -6,11 +6,11 @@ public class Obstacle : MonoBehaviour
 {
     [SerializeField] private Collider _collider;
     private AnimatorManager _animatorManager;
-
+    [SerializeField] private Transform _toCollide;
     private void Start()
     {
-        DataColliders.OnObstacleActions.Add(_collider,Death);
         _animatorManager = GetComponentInChildren<AnimatorManager>();
+        DataColliders.OnObstacleActions.Add(_collider,Death);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,9 +19,12 @@ public class Obstacle : MonoBehaviour
             action?.Invoke();
     }
 
-    private void Death()
+    private Vector3 Death()
     {
         _collider.enabled = false;
         _animatorManager.PlayDeath();
+        return _toCollide.position;
     }
+
+    private void OnDestroy() => DataColliders.OnObstacleActions.Remove(_collider);
 }
