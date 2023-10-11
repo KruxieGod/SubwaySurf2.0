@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 385665625}
   _prefabs:
-  - {fileID: 2077778351615727686, guid: 5586ee8d8679e1e4f8a62dd07d54a0ab, type: 3}
+  - {fileID: 3163933552041325196, guid: 65511d72b3feeee4097e43d80d70c2eb, type: 3}
   - {fileID: 2077778351615727686, guid: dc7d97f9014db384e81cc3be18b8c2ff, type: 3}
 --- !u!4 &891565462
 Transform:
