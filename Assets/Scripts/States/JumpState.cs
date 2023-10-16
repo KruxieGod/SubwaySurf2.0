@@ -2,15 +2,33 @@ using UnityEngine;
 
 public class JumpState : State
 {
-    public JumpState(AnimatorManager animatorManager) : base(animatorManager)
+    private State _currentState;
+    public override State StartState()
     {
-        
-    }
-    
-    public override State OnState()
-    {
-        throw new System.NotImplementedException();
+        IsStartedState
+        _currentState = this;
+        _animatorManager.PlayJump();
+        return _currentState;
     }
 
-    public override bool CanBeSwitch { get; protected set; }
+    public override bool OnObstacle(ObstacleType type)
+    {
+        if (type == ObstacleType.Barrier)
+            return false;
+        else
+        {
+            _currentState = _stateMachine.DeathStateState;
+            return true;
+        }
+    }
+
+    public override State OnState()
+    {
+        if (!IsStartedState)
+        return _currentState;
+    }
+
+    public JumpState(AnimatorManager animatorManager, StateMachine stateMachine) : base(animatorManager, stateMachine)
+    {
+    }
 }

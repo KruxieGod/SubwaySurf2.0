@@ -1,9 +1,6 @@
 public class RunningState : State
 {
-    public RunningState(AnimatorManager animatorManager) : base(animatorManager)
-    {
-        CanBeSwitch = true;
-    }
+   
     
     public override State OnState()
     {
@@ -11,4 +8,8 @@ public class RunningState : State
     }
 
     public sealed override bool CanBeSwitch { get; protected set; }
+
+    public RunningState(AnimatorManager animatorManager, StateMachine stateMachine) : base(animatorManager, stateMachine)
+    {
+    }
 }

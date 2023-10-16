@@ -2,7 +2,17 @@
 public abstract class State
 {
     protected AnimatorManager _animatorManager;
-    protected State(AnimatorManager animatorManager) => _animatorManager = animatorManager;
+    protected StateMachine _stateMachine;
+
+    protected State(AnimatorManager animatorManager, StateMachine stateMachine)
+    {
+        _stateMachine = stateMachine;
+        _animatorManager = animatorManager;
+    }
+
+    public abstract State StartState();
+    public bool IsStartedState { get; set; }
+    public abstract bool OnObstacle(ObstacleType type);
     public abstract State OnState();
-    public abstract bool CanBeSwitch { get; protected set; }
+    public bool CanBeSwitch { get; protected set; }
 }

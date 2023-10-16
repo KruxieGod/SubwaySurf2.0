@@ -9,7 +9,7 @@ public class Snowball : MonoBehaviour
     private const float _timeToDestroy = 3f;
     private void OnTriggerEnter(Collider other)
     {
-        if (DataColliders.OnObstacleActions.TryGetValue(other,out var action))
+        if (DataColliders.OnObjectsForObstacles.TryGetValue(other,out var action))
         {
             var position = action.Invoke();
             transform.position = new Vector3(position.x,transform.position.y,position.z);

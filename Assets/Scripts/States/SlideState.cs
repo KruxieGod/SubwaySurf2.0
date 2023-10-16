@@ -1,10 +1,6 @@
 
 public class SlideState : State
 {
-    public SlideState(AnimatorManager animatorManager) : base(animatorManager)
-    {
-        
-    }
     
     public override State OnState()
     {
@@ -12,4 +8,8 @@ public class SlideState : State
     }
     
     public override bool CanBeSwitch { get; protected set; }
+
+    public SlideState(AnimatorManager animatorManager, StateMachine stateMachine) : base(animatorManager, stateMachine)
+    {
+    }
 }

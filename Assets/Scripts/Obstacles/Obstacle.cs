@@ -11,13 +11,13 @@ public class Obstacle : MonoBehaviour
     private void Start()
     {
         _animatorManager = GetComponentInChildren<AnimatorManager>();
-        DataColliders.OnObstacleActions.Add(_collider,Death);
+        DataColliders.OnObjectsForObstacles.Add(_collider,Death);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (DataColliders.OnObstacleActions.TryGetValue(other,out var action)) // Получаем действие при столкновении
-            action?.Invoke();
+            action?.Invoke(_type);
     }
 
     private Vector3 Death()
@@ -27,5 +27,5 @@ public class Obstacle : MonoBehaviour
         return _toCollide.position;
     }
 
-    private void OnDestroy() => DataColliders.OnObstacleActions.Remove(_collider);
+    private void OnDestroy() => DataColliders.OnObjectsForObstacles.Remove(_collider);
 }

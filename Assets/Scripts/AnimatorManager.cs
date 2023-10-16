@@ -9,6 +9,7 @@ public class AnimatorManager : MonoBehaviour
     private Animator _animator;
     private const string _deathState = "Death"; // название анимации смерти
     private const string _snowballThrowState = "Throw snowball";
+    private const string _jumpState = "Jump";
     private void Awake()
     {
         _animator = GetComponent<Animator>(); // получаем аниматор
@@ -22,5 +23,10 @@ public class AnimatorManager : MonoBehaviour
     public void PlaySnowballThrower()
     {
         _animator.CrossFade(_snowballThrowState,0.2f);
+    }
+
+    public void PlayJump()
+    {
+        _animator.CrossFade(_jumpState,0.2f);
     }
 }

@@ -13,10 +13,10 @@ public class PlayerManager : MonoBehaviour
     
     private void Awake() // когда появляется объект
     {
-        DataColliders.OnObstacleActions.Add(GetComponent<Collider>(),Death);
         _animatorManager = GetComponent<AnimatorManager>(); // получаем скрипт аниматора
         _movementHandler = GetComponent<MovementHandler>(); // получаем скрипт передвижения
         _stateMachine = new StateMachine(_animatorManager);
+        DataColliders.OnObstacleActions.Add(GetComponent<Collider>(),Death);
     }
 
     public void SubscribeBoard(BoardMove boardMove)
@@ -40,17 +40,11 @@ public class PlayerManager : MonoBehaviour
         _movementHandler.Move(); // бежит
     }
 
+    public void OnCurrentStateStart(bool isStarted) => _stateMachine.SetStart = isStarted;
     public void Jump() => _stateMachine.ChangeToJumpState();
+    public void ThrowSnow() => _stateMachine.ChangeToThrowState();
+    public void Slide() => _stateMachine.ChangeToSlideState();
 
-    public void ThrowSnow()
-    {
-        _animatorManager.PlaySnowballThrower();
-    }
-
-    public Vector3 Death()
-    {
-        _isDead = true;
-        _animatorManager.PlayDeath();
-        return Vector3.zero;
-    }
+    private void Death(ObstacleType type)
+        => _stateMachine.OnObstacle(type);
 }

@@ -1,14 +1,14 @@
 
 public class ThrowState : State
 {
-    public ThrowState(AnimatorManager animatorManager,StateMachine stateMachine) : base(animatorManager)
-    {
-    }
-
     public override State OnState()
     {
-       
+        return this;
     }
 
     public override bool CanBeSwitch { get; protected set; }
+
+    public ThrowState(AnimatorManager animatorManager, StateMachine stateMachine) : base(animatorManager, stateMachine)
+    {
+    }
 }
