@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Obstacle : MonoBehaviour
 {
+    [SerializeField] private ObstacleType _type;
     [SerializeField] private Collider _collider;
     private AnimatorManager _animatorManager;
     [SerializeField] private Transform _toCollide;

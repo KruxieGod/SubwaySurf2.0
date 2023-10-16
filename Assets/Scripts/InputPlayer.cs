@@ -15,6 +15,8 @@ public class InputPlayer : MonoBehaviour
     private void Update()
     {
         var direction = Direction.None;
+        if (Input.GetKeyDown(KeyCode.Space))
+            _playerManager.Jump();
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) // Считываем клавишу D или стрелку направо
             direction = Direction.Right;
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) // Считываем клавишу A или стрелку налево

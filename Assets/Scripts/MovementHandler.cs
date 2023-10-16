@@ -3,13 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class MovementHandler : MonoBehaviour
 {
+    [SerializeField] private float _jumpHeight;
     [SerializeField] private float _speed; // берем с инспектора
     private float _targetPos;
     private float _previousPos;
     [SerializeField] private float _speedTimeToPos;// берем с инспектора
     private bool _canMove;
+    private Vector3 _velocity = Vector3.zero;
+    private CharacterController _controller;
+
+    private void Awake()
+        => _controller = GetComponent<CharacterController>();
 
     public void MoveToX(Vector3 position)
     {
@@ -21,6 +28,9 @@ public class MovementHandler : MonoBehaviour
     public void Move()
     {
         var direction = transform.forward*_speed; // направление вперед
+        _controller.Move(direction * Time.deltaTime);// прибавляем к позиции направление
+        _velocity.y += Physics.gravity.y * Time.deltaTime;
+        _controller.Move(_velocity * Time.deltaTime);
         var toTarget = _targetPos - transform.position.x; // направление движения вправо-влево
         if (_canMove && Mathf.Abs(toTarget) > Double.Epsilon) // дистанция , если она равна нулю Mathf.Abs(toTarget) > Double.Epsilon/Mathf.Abs(toTarget) == 0 
         {
@@ -30,7 +40,16 @@ public class MovementHandler : MonoBehaviour
         }
         else
             _canMove = false; // не может двигаться, если пришел
+
         
-        transform.position += direction*Time.deltaTime; // прибавляем к позиции направление
+    }
+
+    public void Jump()
+    {
+        if (_controller.isGrounded)
+        {
+            var jumpVelocity = Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(Physics.gravity.y));
+            _velocity.y = jumpVelocity;
+        }
     }
 }
