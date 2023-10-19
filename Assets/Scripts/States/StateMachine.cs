@@ -20,9 +20,9 @@ public class StateMachine
 
     public bool OnObstacle(ObstacleType type) => _currentState.OnObstacle(type);
 
-    public bool SetStart
+    public bool CanBeSwitch
     {
-        set => _currentState.IsStartedState = value;
+        set => _currentState.CanBeSwitch = true;
     }
 
     public void UpdateStateMachine()

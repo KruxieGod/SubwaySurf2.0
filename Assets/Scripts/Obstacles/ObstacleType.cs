@@ -1,4 +1,7 @@
 
+using System;
+
+[Flags]
 public enum ObstacleType
 {
     Barrier,

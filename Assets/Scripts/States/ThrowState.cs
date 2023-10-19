@@ -1,14 +1,11 @@
 
-public class ThrowState : State
+using System;
+
+public class ThrowState : AnimationState
 {
-    public override State OnState()
-    {
-        return this;
-    }
-
-    public override bool CanBeSwitch { get; protected set; }
-
-    public ThrowState(AnimatorManager animatorManager, StateMachine stateMachine) : base(animatorManager, stateMachine)
+    public ThrowState(AnimatorManager animatorManager, StateMachine stateMachine) : base(animatorManager, stateMachine, animatorManager.PlaySnowballThrower)
     {
     }
+
+    protected override ObstacleType _onDestroyObstacle => ObstacleType.Barrier | ObstacleType.Fence | ObstacleType.Wall;
 }

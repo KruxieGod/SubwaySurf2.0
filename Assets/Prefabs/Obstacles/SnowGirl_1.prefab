@@ -98,8 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdad40c720b841ed82d99f9d19f5a2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _collider: {fileID: 3816054867154900634}
+  _animatorManager: {fileID: 0}
   _toCollide: {fileID: 1682850916538070453}
+  _isEnvironment: 0
 --- !u!1 &582796104249140021
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74683f23b237988449c3dfa74b3d59ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 651076591364092481}
 --- !u!1 &1695439788566664622
 GameObject:
   m_ObjectHideFlags: 0

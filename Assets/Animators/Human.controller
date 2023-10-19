@@ -14,13 +14,13 @@ AnimatorStateMachine:
     m_Position: {x: 180, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7128567053542029331}
-    m_Position: {x: 140, y: 320, z: 0}
+    m_Position: {x: -70, y: 440, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -108075753995081528}
-    m_Position: {x: 229.10303, y: 448.39294, z: 0}
+    m_Position: {x: 200, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -778131875249573815}
-    m_Position: {x: 50, y: 390, z: 0}
+    m_Position: {x: -20, y: 310, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -71,9 +71,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.4827441
-  m_TransitionOffset: 0
-  m_ExitTime: 0.4987902
+  m_TransitionDuration: 0.11333704
+  m_TransitionOffset: 0.004397754
+  m_ExitTime: 0.72966963
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 1
@@ -139,25 +139,7 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Human
   serializedVersion: 5
-  m_AnimatorParameters:
-  - m_Name: IsDead
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: IsSlided
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: IsJumped
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+  m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

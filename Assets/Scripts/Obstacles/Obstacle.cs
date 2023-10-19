@@ -8,6 +8,7 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private Collider _collider;
     private AnimatorManager _animatorManager;
     [SerializeField] private Transform _toCollide;
+    [SerializeField] private bool _isEnvironment;
     private void Start()
     {
         _animatorManager = GetComponentInChildren<AnimatorManager>();
@@ -22,8 +23,11 @@ public class Obstacle : MonoBehaviour
 
     private Vector3 Death()
     {
-        _collider.enabled = false;
-        _animatorManager.PlayDeath();
+        if (!_isEnvironment)
+        {
+            _collider.enabled = false;
+            _animatorManager.PlayDeath();   
+        }
         return _toCollide.position;
     }
 

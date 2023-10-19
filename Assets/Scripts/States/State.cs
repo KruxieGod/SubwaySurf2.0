@@ -11,8 +11,7 @@ public abstract class State
     }
 
     public abstract State StartState();
-    public bool IsStartedState { get; set; }
     public abstract bool OnObstacle(ObstacleType type);
     public abstract State OnState();
-    public bool CanBeSwitch { get; protected set; }
+    public bool CanBeSwitch { get; set; }
 }

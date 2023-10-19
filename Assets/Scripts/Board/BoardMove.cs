@@ -10,15 +10,18 @@ public class BoardMove : MonoBehaviour
     [SerializeField] private Transform _player; // игрок
     [SerializeField] private Board[] _prefabs; // дорожки
     private Queue<Board> _queue = new ();
+    private Queue<int> _countQueue = new();
     private Board _last;
     private const float _offset = 10;
     private int _indexPlayer = 0;
     private void Start()
     {
-        _last = Instantiate(_prefabs[Random.Range(0, _prefabs.Length)], transform.position, Quaternion.identity); // Спавним первую дорожку
+        var index = Random.Range(0, _prefabs.Length);
+        _last = Instantiate(_prefabs[index], transform.position, Quaternion.identity); // Спавним первую дорожку
         _last.transform.position = _player.transform.position; // Ставим позицию где игрок находится
         _last.Initialize(); // Инициализуем (он спавним препятствия)
         _queue.Enqueue(_last); // добавляем в очередь
+        _countQueue.Enqueue(index);
     }
 
     public bool GetFromPositionToNext(Direction direction,out Vector3 position) // out - назначение позиции
@@ -34,9 +37,14 @@ public class BoardMove : MonoBehaviour
 
     private void Update()
     {
-        if (_player.position.z < _last.transform.position.z) // проверяем , если он дальше середины
+        if (_player.position.z < _last.transform.position.z+_last.Scale.z/3f * _offset) // проверяем , если он дальше середины
         {
-            var board = _prefabs[Random.Range(0, _prefabs.Length)]; // берем дорожку
+            var index = Random.Range(0, _prefabs.Length);
+            var indexLast = _countQueue.Dequeue();
+            while (index == indexLast)
+                index = Random.Range(0, _prefabs.Length);
+            _countQueue.Enqueue(index);
+            var board = _prefabs[index]; // берем дорожку
             var positionX = _last.Position.x; 
             var positionY = _last.Position.y; // позиции дорожек
             var positionZ = _last.Position.z - _last.Scale.z * _offset; // позиция по z следующей дороги
