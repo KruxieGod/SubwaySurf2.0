@@ -863,6 +863,8 @@ MonoBehaviour:
     Second: 6
   - First: {fileID: 3165104232061531705, guid: 679e3807926ea0246b5719ff2aa87912, type: 3}
     Second: 6
+  - First: {fileID: 3929616322576163381, guid: 35d71a83e9cdcd249b731f0122a34d1b, type: 3}
+    Second: 6
 --- !u!1 &8994122608829460794
 GameObject:
   m_ObjectHideFlags: 0

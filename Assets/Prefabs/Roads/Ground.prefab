@@ -802,6 +802,8 @@ MonoBehaviour:
     Second: 4
   - First: {fileID: 8669251827528208293, guid: 378888ce802b6004993a5db857809d39, type: 3}
     Second: 4
+  - First: {fileID: 3929616322576163381, guid: 35d71a83e9cdcd249b731f0122a34d1b, type: 3}
+    Second: 6
 --- !u!1 &8239220988166569660
 GameObject:
   m_ObjectHideFlags: 0

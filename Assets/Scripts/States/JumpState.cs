@@ -4,7 +4,11 @@ using DG.Tweening;
 public class JumpState : AnimationState
 {
     public JumpState(AnimatorManager animatorManager, StateMachine stateMachine) : base(animatorManager, stateMachine,
-        animatorManager.PlayJump)
+        () =>
+        {
+            animatorManager.PlayJump(); // анимация прыжка
+            return true;
+        })
     {
     }
 

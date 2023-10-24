@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdad40c720b841ed82d99f9d19f5a2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
+  _type: 2
   _collider: {fileID: 4327831201919847736}
   _toCollide: {fileID: 1765038103811460346}
   _isEnvironment: 1

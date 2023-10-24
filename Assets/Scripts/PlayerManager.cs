@@ -10,12 +10,16 @@ public class PlayerManager : MonoBehaviour
     private BoardMove _boardMove;
     [SerializeField]private AnimatorManager _animatorManager;
     [SerializeField] private Collider _collider;
+    [SerializeField] private SnowballCollector _snowballCollector;
     private bool _isDead;
     
     private void Awake() // когда появляется объект
     {
-        _stateMachine = new StateMachine(_animatorManager);
-        DataColliders.OnObstacleActions.Add(_collider,Death);
+        _stateMachine = new StateMachine(_animatorManager, _snowballCollector);
+        if (!DataColliders.OnObstacleActions.ContainsKey(_collider))
+            DataColliders.OnObstacleActions.Add(_collider, Death);
+        else
+            DataColliders.OnObstacleActions[_collider] += Death;
     }
 
     public void SubscribeBoard(BoardMove boardMove)
@@ -45,6 +49,10 @@ public class PlayerManager : MonoBehaviour
     public void ThrowSnow() => _stateMachine.ChangeToThrowState();
     public void Slide() => _stateMachine.ChangeToSlideState();
 
-    private void Death(ObstacleType type)
-        => _stateMachine.OnObstacle(type);
+    private void Death(ObstacleType type,GameObject gameObject)
+    {
+        if (type == ObstacleType.Snowball)
+            return;
+        _stateMachine.OnObstacle(type);
+    }
 }

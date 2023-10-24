@@ -17,8 +17,8 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (DataColliders.OnObstacleActions.TryGetValue(other,out var action)) // Получаем действие при столкновении
-            action?.Invoke(_type);
+        if (DataColliders.OnObstacleActions.TryGetValue(other, out var action)) // Получаем действие при столкновении
+            action?.Invoke(_type,gameObject);
     }
 
     private Vector3 Death()

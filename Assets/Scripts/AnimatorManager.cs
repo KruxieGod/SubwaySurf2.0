@@ -25,5 +25,5 @@ public class AnimatorManager : MonoBehaviour
     => _animator.CrossFade(_slideState,0.2f);
     
     public void PlayRunning()
-        => _animator.CrossFade(_runningState,0.2f);
+        => _animator.CrossFade(_runningState,0.2f); // передаем плавно анимацию бега
 }

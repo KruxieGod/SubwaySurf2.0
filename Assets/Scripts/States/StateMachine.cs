@@ -1,20 +1,20 @@
 
-public class StateMachine
+public class StateMachine 
 {
     private State _currentState;
     private readonly JumpState _jumpStateState;
-    private readonly SlideState _slideStateState;
+    private readonly SlideState _slideState;
     private readonly ThrowState _throwStateState;
     public readonly RunningState RunningStateState;
-    public readonly DeathState DeathStateState;
+    public readonly DeathState DeathState;
     
-    public StateMachine(AnimatorManager animatorManager)
+    public StateMachine(AnimatorManager animatorManager,SnowballCollector snowballCollector) // в контрукторе мы принмаем аниматора менеджера и коллектор снежков
     {
-        DeathStateState = new DeathState(animatorManager,this);
-        RunningStateState = new RunningState(animatorManager,this);
-        _slideStateState = new SlideState(animatorManager,this);
-        _jumpStateState = new JumpState(animatorManager,this);
-        _throwStateState = new ThrowState(animatorManager, this);
+        DeathState = new DeathState(animatorManager,this); // состояние смерти
+        RunningStateState = new RunningState(animatorManager,this); // состояние бега
+        _slideState = new SlideState(animatorManager,this); // состояние скольжения
+        _jumpStateState = new JumpState(animatorManager,this);// состояние прыжка
+        _throwStateState = new ThrowState(animatorManager, this,snowballCollector); // состояние кидания снежка
         _currentState = RunningStateState;
     }
 
@@ -26,21 +26,21 @@ public class StateMachine
     }
 
     public void UpdateStateMachine()
-    => _currentState = _currentState.OnState();
+    => _currentState = _currentState.OnState(); // обноваляем состояния
 
-    public void ChangeToSlideState()
+    public void ChangeToSlideState() // изменяем на скольжение
     {
         if (_currentState.CanBeSwitch)
-            _currentState = _slideStateState.StartState();
+            _currentState = _slideState.StartState(); // ставим состояние скольжения
     }
 
-    public void ChangeToJumpState()
+    public void ChangeToJumpState() // прыжок
     {
         if (_currentState.CanBeSwitch)
             _currentState = _jumpStateState.StartState();
     }
 
-    public void ChangeToThrowState()
+    public void ChangeToThrowState() // кидание снежка
     {
         if (_currentState.CanBeSwitch)
             _currentState = _throwStateState.StartState();
