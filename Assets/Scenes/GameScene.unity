@@ -1094,10 +1094,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 543450652824663982}
   _prefabs:
-  - {fileID: 2077778351615727686, guid: 2e9e8283c98ddf24d84522ef0c9c8981, type: 3}
-  - {fileID: 2077778351615727686, guid: dc7d97f9014db384e81cc3be18b8c2ff, type: 3}
-  - {fileID: 3163933552041325196, guid: 65511d72b3feeee4097e43d80d70c2eb, type: 3}
-  - {fileID: 3163933552041325196, guid: 590c3ea8422ca4b4bb1fdbacb5543fa9, type: 3}
+  - {fileID: 2077778351615727686, guid: a0cee6c903e087443b819bd00c8a9bd6, type: 3}
+  - {fileID: 2077778351615727686, guid: 3bc6178343de4064abc982a6cd4f8734, type: 3}
+  - {fileID: 3163933552041325196, guid: 2fe47c0ff720a3f49b6e87b2c20bf088, type: 3}
+  - {fileID: 3163933552041325196, guid: e5b9503f71beaa64abddc38496cb4683, type: 3}
 --- !u!4 &891565462
 Transform:
   m_ObjectHideFlags: 0
