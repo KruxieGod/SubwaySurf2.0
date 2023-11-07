@@ -1,12 +1,16 @@
 
 public class DeathState : State
 {
-    public DeathState(AnimatorManager animatorManager, StateMachine stateMachine) : base(animatorManager, stateMachine)
+    private readonly EndGameUI _endGameUI;
+
+    public DeathState(AnimatorManager animatorManager, StateMachine stateMachine,EndGameUI endGameUI) : base(animatorManager, stateMachine)
     {
+        _endGameUI = endGameUI;
     }
 
     public override State StartState()
     {
+        _endGameUI.Activate();
         _animatorManager.PlayDeath();
         return this;
     }

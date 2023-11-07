@@ -11,11 +11,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]private AnimatorManager _animatorManager;
     [SerializeField] private Collider _collider;
     [SerializeField] private SnowballCollector _snowballCollector;
+    [SerializeField] private EndGameUI _endGameUI;
     private bool _isDead;
     
     private void Awake() // когда появляется объект
     {
-        _stateMachine = new StateMachine(_animatorManager, _snowballCollector);
+        _stateMachine = new StateMachine(_animatorManager, _snowballCollector,_endGameUI);
         if (!DataColliders.OnObstacleActions.ContainsKey(_collider))
             DataColliders.OnObstacleActions.Add(_collider, Death);
         else

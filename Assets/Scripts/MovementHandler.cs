@@ -11,6 +11,7 @@ public class MovementHandler : MonoBehaviour
     private float _targetPos;
     private float _previousPos;
     [SerializeField] private float _speedTimeToPos;// берем с инспектора
+    public float Coefficient = 1f;
     private bool _canMove;
     private Vector3 _velocity = Vector3.zero;
     private CharacterController _controller;
@@ -27,7 +28,7 @@ public class MovementHandler : MonoBehaviour
 
     public void Move()
     {
-        var direction = transform.forward*_speed; // направление вперед
+        var direction = transform.forward*(_speed*Coefficient); // направление вперед
         _controller.Move(direction * Time.deltaTime);// прибавляем к позиции направление
         _velocity.y += Physics.gravity.y * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);

@@ -8,9 +8,9 @@ public class StateMachine
     public readonly RunningState RunningStateState;
     public readonly DeathState DeathState;
     
-    public StateMachine(AnimatorManager animatorManager,SnowballCollector snowballCollector) // в контрукторе мы принмаем аниматора менеджера и коллектор снежков
+    public StateMachine(AnimatorManager animatorManager,SnowballCollector snowballCollector,EndGameUI endGameUI) // в контрукторе мы принмаем аниматора менеджера и коллектор снежков
     {
-        DeathState = new DeathState(animatorManager,this); // состояние смерти
+        DeathState = new DeathState(animatorManager,this,endGameUI); // состояние смерти
         RunningStateState = new RunningState(animatorManager,this); // состояние бега
         _slideState = new SlideState(animatorManager,this); // состояние скольжения
         _jumpStateState = new JumpState(animatorManager,this);// состояние прыжка

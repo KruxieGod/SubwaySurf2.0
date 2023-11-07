@@ -19,7 +19,6 @@ public class BoardMove : MonoBehaviour
         var index = Random.Range(0, _prefabs.Length);
         _last = Instantiate(_prefabs[index], transform.position, Quaternion.identity); // Спавним первую дорожку
         _last.transform.position = _player.transform.position; // Ставим позицию где игрок находится
-        _last.Initialize(); // Инициализуем (он спавним препятствия)
         _queue.Enqueue(_last); // добавляем в очередь
         _countQueue.Enqueue(index);
     }

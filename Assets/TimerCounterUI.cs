@@ -6,12 +6,5 @@ using UnityEngine;
 
 public class TimerCounterUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _text;
-    private float _timeCount = 0;
-    
-    private void Update()
-    {
-        _timeCount += Time.deltaTime;
-        _text.SetText(((int)_timeCount).ToString());
-    }
+    [field: SerializeField] public TextMeshProUGUI TextCounter { get; private set; }
 }

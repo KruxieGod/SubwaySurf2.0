@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -50,7 +51,8 @@ public class Board : MonoBehaviour
     private void OnDestroy()
     {
         foreach (var obstacle in _spawnedObstacles) // уничтожаем все заспавленные препятствия
-            Destroy(obstacle.gameObject);
+            if (!obstacle.IsUnityNull())
+                Destroy(obstacle.gameObject);
         _spawnedObstacles = null; // обнуляем массив
     }
 }
