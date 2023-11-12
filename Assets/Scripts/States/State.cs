@@ -3,7 +3,6 @@ public abstract class State
 {
     protected AnimatorManager _animatorManager;
     protected StateMachine _stateMachine;
-
     protected State(AnimatorManager animatorManager, StateMachine stateMachine)
     {
         _stateMachine = stateMachine;

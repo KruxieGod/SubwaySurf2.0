@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class MovementHandler : MonoBehaviour
 {
-    [SerializeField] private float _jumpHeight;
     [SerializeField] private float _speed; // берем с инспектора
     private float _targetPos;
     private float _previousPos;
@@ -43,14 +42,5 @@ public class MovementHandler : MonoBehaviour
             _canMove = false; // не может двигаться, если пришел
 
         
-    }
-
-    public void Jump()
-    {
-        if (_controller.isGrounded)
-        {
-            var jumpVelocity = Mathf.Sqrt(2 * _jumpHeight * Mathf.Abs(Physics.gravity.y));
-            _velocity.y = jumpVelocity;
-        }
     }
 }
